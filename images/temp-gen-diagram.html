@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary HTML/JS to generate SVG diagram dynamically</title>
+    <style>
+        * {
+            margin: 15px;
+            background-color: grey;
+        }
+        button {
+            font-size: large;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: lightgrey;
+        }
+        #content {
+            visibility: hidden;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Circle Image Generator</h1>
+    <p><button id="genButton" onclick="genImage()">Generate Image</button></p>
+    <p>
+            <p id="content">content</p>
+    </p>
+    <script>
+        function getImageTextContent() {
+            return "<This>is<a>text.";
+        }
+        function genImage() {
+            console.log('genImage() invoked at ', Date());
+            let ct = document.getElementById("content");
+            let txt = getImageTextContent();
+            ct.innerText = txt;
+            ct.style.visibility = "visible";
+        }
+    </script>
+</body>
+</html>
