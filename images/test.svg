@@ -2,7 +2,17 @@
 width="300" height="300"
 xmlns="http://www.w3.org/2000/svg">
 <rect width="100%" height="100%" fill="#d0d0c0" />
-<line x1="29.20000000000001" y1="164.4" x2="259.59999999999997" y2="97.2" stroke="#a0a0a0" stroke-width="1" />
+<line x1="30.600000000000012" y1="169.2" x2="261" y2="102" stroke="#a0a0a0" stroke-width="1" />
+<line x1="30.600000000000012" y1="169.2" x2="40.5649132735021" y2="168.3630391576771" stroke="#a0a0a0" stroke-width="1" />
+<line x1="30.600000000000012" y1="169.2" x2="39.45236502104976" y2="164.54858800641193" stroke="#a0a0a0" stroke-width="1" />
+<line x1="261" y1="102" x2="251.03508672649792" y2="102.83696084232288" stroke="#a0a0a0" stroke-width="1" />
+<line x1="261" y1="102" x2="252.14763497895026" y2="106.65141199358807" stroke="#a0a0a0" stroke-width="1" />
+<circle cx="150" cy="150" r="135" stroke="#a0a0a0" stroke-width="1" fill="transparent" />
+<line x1="265.2" y1="116.4" x2="294" y2="108" stroke="#a0a0a0" stroke-width="1" />
+<line x1="279.6" y1="112.19999999999999" x2="278.76303915767716" y2="102.2350867264979" stroke="#a0a0a0" stroke-width="1" />
+<line x1="279.6" y1="112.19999999999999" x2="274.94858800641197" y2="103.34763497895024" stroke="#a0a0a0" stroke-width="1" />
+<line x1="279.6" y1="112.19999999999999" x2="280.4369608423229" y2="122.16491327350208" stroke="#a0a0a0" stroke-width="1" />
+<line x1="279.6" y1="112.19999999999999" x2="284.2514119935881" y2="121.05236502104974" stroke="#a0a0a0" stroke-width="1" />
 <line x1="34.80000000000001" y1="183.6" x2="265.2" y2="116.4" stroke="#000000" stroke-width="4" />
 <circle cx="150" cy="150" r="120" stroke="#000000" stroke-width="4" fill="transparent" />
 </svg>

@@ -43,7 +43,7 @@
         const IMG_BG_COLOR = "#d0d0c0";
         const IMG_MAIN_COLOR = "#000000";
         const IMG_NOTE_COLOR = "#a0a0a0";
-        const IMG_NOTE_SPACING = 20;  // TODO
+        const IMG_NOTE_SPACING = 15;
         function drawCircle(cx, cy, radius, colr, width) {
             let txt = '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + 
                 '" stroke="' + colr + '" stroke-width="' + width +
@@ -57,9 +57,23 @@
                 width + '" />';
             return txt;
         }
+        function drawArrow(x, y, angle, colr, width) {
+            let line = [];
+            let spc = IMG_ARROW_LEN;
+            for (let i=0;i<2;i++) {
+                let workAngle = angle+(i*2-1)*IMG_ARROW_ANGLE;
+                let sn = Math.sin(workAngle);
+                let cs = Math.cos(workAngle);
+                line[i] = drawLine(x, y, x+spc*cs, y-spc*sn, colr, width);
+            }
+            return line[0] + '\n' + line[1];
+        }
         function drawArrowLine(x1, y1, x2, y2, colr, width) {
-            return drawLine(x1, y1, x2, y2, colr, width);
-            // TODO
+            let mainLine = drawLine(x1, y1, x2, y2, colr, width);
+            let angle = Math.atan((y1-y2)/(x2-x1));
+            let arrow1 = drawArrow(x1, y1, angle, colr, width);
+            let arrow2 = drawArrow(x2, y2, angle+Math.PI, colr, width);
+            return mainLine + '\n' + arrow1 + '\n' + arrow2;
         }
         function getImageTextContent() {
             let svgText = `<svg version="1.1"
@@ -74,6 +88,18 @@
                 IMG_CTR+IMG_CIRC_RADIUS*cs-IMG_NOTE_SPACING*sn,
                 IMG_CTR-IMG_CIRC_RADIUS*sn-IMG_NOTE_SPACING*cs,
                 IMG_NOTE_COLOR,IMG_NOTE_WEIGHT);
+            svgText += '\n' + drawCircle(IMG_CTR, IMG_CTR, IMG_CIRC_RADIUS+IMG_NOTE_SPACING, IMG_NOTE_COLOR, IMG_NOTE_WEIGHT);
+            svgText += '\n' + drawLine(IMG_CTR+IMG_CIRC_RADIUS*cs,
+                IMG_CTR-IMG_CIRC_RADIUS*sn,
+                IMG_CTR+(IMG_CIRC_RADIUS+2*IMG_NOTE_SPACING)*cs,
+                IMG_CTR-(IMG_CIRC_RADIUS+2*IMG_NOTE_SPACING)*sn,
+                IMG_NOTE_COLOR,IMG_NOTE_WEIGHT);
+            svgText += '\n' + drawArrow(IMG_CTR+(IMG_CIRC_RADIUS+IMG_NOTE_SPACING)*cs,
+                IMG_CTR-(IMG_CIRC_RADIUS+IMG_NOTE_SPACING)*sn,
+                IMG_ROTATE_RADS+Math.PI/2,IMG_NOTE_COLOR,IMG_NOTE_WEIGHT);
+            svgText += '\n' + drawArrow(IMG_CTR+(IMG_CIRC_RADIUS+IMG_NOTE_SPACING)*cs,
+                IMG_CTR-(IMG_CIRC_RADIUS+IMG_NOTE_SPACING)*sn,
+                IMG_ROTATE_RADS-Math.PI/2,IMG_NOTE_COLOR,IMG_NOTE_WEIGHT);
             svgText += '\n' + drawLine(IMG_CTR-IMG_CIRC_RADIUS*cs,IMG_CTR+IMG_CIRC_RADIUS*sn,
                 IMG_CTR+IMG_CIRC_RADIUS*cs,IMG_CTR-IMG_CIRC_RADIUS*sn,IMG_MAIN_COLOR,IMG_CIRC_WEIGHT);
             svgText += '\n' + drawCircle(IMG_CTR, IMG_CTR, IMG_CIRC_RADIUS, IMG_MAIN_COLOR, IMG_CIRC_WEIGHT);
