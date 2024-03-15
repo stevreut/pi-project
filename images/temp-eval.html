@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary evaluation calculator</title>
+    <style>
+        * {
+            margin: 20px;
+            background-color: #808080;
+            color: #202040;
+            font-size: larger;
+        }
+        input {
+            background-color: #d0d0f0;
+            color: #000000;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20pt;
+            font-weight: 500;
+            padding: 15px;
+        }
+        button {
+            padding: 15px;
+            font-size:large;
+            font-weight: bold;
+            background-color: #a0a0a0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>To evaluate: <input type="text" id="ebox" size="60" /></p>
+    <p><button id="clrbutt" onclick="clearr()" >Clear</button></p>
+    <p><button id="evalbutt" onclick="doEval()" >Evaluate</button></p>
+    <p>Resulting value: <input type="text" id="resbox" size="30" /></p>
+    <script>
+        function clearr() {
+            let bx = document.getElementById("ebox");
+            bx.value = "";
+        }
+        function sin(x) {
+            return Math.sin(x*Math.PI/180);
+        }
+        function cos(x) {
+            return Math.cos(x*Math.PI/180);
+        }
+        function tan(x) {
+            return Math.tan(x*Math.PI/180);
+        }
+        function atan(x) {
+            return 180/Math.PI*Math.atan(x);
+        }
+        function asin(x) {
+            return 180/Math.PI*Math.asin(x);
+        }
+        function acos(x) {
+            return 180/Math.PI*Math.acos(x);
+        }
+        function ln(x) {
+            return Math.ln(x);
+        }
+        function exp(x) {
+            return Math.exp(x);
+        }
+        function doReplacements(val) {
+            val = val.replaceAll("^","**");
+            return val;
+        }
+        function doEval() {
+            console.log('test3');
+            let bx = document.getElementById("ebox");
+            let obx = document.getElementById("resbox");
+            resbox.value = "";
+            let inVal = bx.value;
+            inVal = doReplacements(inVal);
+            bx.value = inVal;
+            let outVal = eval(inVal);
+            resbox.value = outVal;
+        }
+    </script>
+</body>
+</html>
