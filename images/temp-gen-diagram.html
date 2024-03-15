@@ -32,8 +32,53 @@
             <p id="content">content</p>
     </p>
     <script>
+        const IMG_SIZE = 300;
+        const IMG_CTR = IMG_SIZE/2;
+        const IMG_CIRC_RADIUS = 120;
+        const IMG_ROTATE_RADS = Math.asin(7/25);
+        const IMG_CIRC_WEIGHT = 4;
+        const IMG_NOTE_WEIGHT = 1;
+        const IMG_ARROW_LEN = 10;
+        const IMG_ARROW_ANGLE = 0.2;
+        const IMG_BG_COLOR = "#d0d0c0";
+        const IMG_MAIN_COLOR = "#000000";
+        const IMG_NOTE_COLOR = "#a0a0a0";
+        const IMG_NOTE_SPACING = 20;  // TODO
+        function drawCircle(cx, cy, radius, colr, width) {
+            let txt = '<circle cx="' + cx + '" cy="' + cy + '" r="' + radius + 
+                '" stroke="' + colr + '" stroke-width="' + width +
+                '" fill="transparent" />';
+            return txt;
+        }
+        function drawLine(x1, y1, x2, y2, colr, width) {
+            let txt = '<line x1="' + x1 + '" y1="' + y1 +
+                '" x2="' + x2 + '" y2="' + y2 + 
+                '" stroke="' + colr + '" stroke-width="' +
+                width + '" />';
+            return txt;
+        }
+        function drawArrowLine(x1, y1, x2, y2, colr, width) {
+            return drawLine(x1, y1, x2, y2, colr, width);
+            // TODO
+        }
         function getImageTextContent() {
-            return "<This>is<a>text.";
+            let svgText = `<svg version="1.1"
+     width="300" height="300"
+     xmlns="http://www.w3.org/2000/svg">`;
+            svgText += '\n<rect width="100%" height="100%" fill="' + IMG_BG_COLOR + '" />';
+            let cs = Math.cos(IMG_ROTATE_RADS);
+            let sn = Math.sin(IMG_ROTATE_RADS);
+            svgText += '\n' + drawArrowLine(
+                IMG_CTR-IMG_CIRC_RADIUS*cs-IMG_NOTE_SPACING*sn,
+                IMG_CTR+IMG_CIRC_RADIUS*sn-IMG_NOTE_SPACING*cs,
+                IMG_CTR+IMG_CIRC_RADIUS*cs-IMG_NOTE_SPACING*sn,
+                IMG_CTR-IMG_CIRC_RADIUS*sn-IMG_NOTE_SPACING*cs,
+                IMG_NOTE_COLOR,IMG_NOTE_WEIGHT);
+            svgText += '\n' + drawLine(IMG_CTR-IMG_CIRC_RADIUS*cs,IMG_CTR+IMG_CIRC_RADIUS*sn,
+                IMG_CTR+IMG_CIRC_RADIUS*cs,IMG_CTR-IMG_CIRC_RADIUS*sn,IMG_MAIN_COLOR,IMG_CIRC_WEIGHT);
+            svgText += '\n' + drawCircle(IMG_CTR, IMG_CTR, IMG_CIRC_RADIUS, IMG_MAIN_COLOR, IMG_CIRC_WEIGHT);
+            svgText += "\n</svg>";
+            return svgText;
         }
         function genImage() {
             console.log('genImage() invoked at ', Date());
