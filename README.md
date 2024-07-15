@@ -56,7 +56,7 @@ As, for now, this is a strictly front-end implementation, all that is necessary 
 
 *For now*, once installed as described above, simply open the included index.html file with your internet browser - by double-clicking, explicitly opening the file, or whatever other action might be appropriate for your platform.
 
-*(Ultimately, it is likely that this same front-end only implementation will be made available as a URL on github, but that is not the case at this moment.)*
+*(Ultimately, it is likely that this same front-end only implementation will be made available as a URL on github, but that is not the case at this time.)*
 
 # License.
 
